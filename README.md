@@ -52,7 +52,3 @@ streamlit run app.py
 2. Chọn danh mục sản phẩm từ dropdown menu
 3. Chọn sản phẩm cụ thể để xem chi tiết
 4. Nhấn nút "Get Recommendations" để nhận các đề xuất sản phẩm tương tự
-
-## Tiến độ chung
-- Sản phẩm hiện tại chưa hoàn thiện, tạm ổn về Deep Matrix Factorization, chưa dùng 2 phương pháp phụ (Collaborative filtering, Content-Based Filtering)
-
