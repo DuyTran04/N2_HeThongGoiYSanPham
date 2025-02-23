@@ -1,0 +1,199 @@
+/* Register Page Styles */
+.register-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    padding: 20px;
+}
+
+.register-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+}
+
+.register-header {
+    position: relative;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.register-header h1 {
+    color: #333;
+    font-size: 24px;
+    margin: 0;
+}
+
+.back-home {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9b59b6;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.back-home:hover {
+    color: #8e44ad;
+}
+
+.register-form .form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+    font-size: 14px;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-group i {
+    position: absolute;
+    left: 12px;
+    color: #9b59b6;
+    font-size: 16px;
+}
+
+.input-group .toggle-password {
+    left: auto;
+    right: 12px;
+    cursor: pointer;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 40px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #9b59b6;
+    outline: none;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin: 0;
+    cursor: pointer;
+}
+
+.checkbox-container a {
+    color: #9b59b6;
+    text-decoration: none;
+}
+
+.checkbox-container a:hover {
+    text-decoration: underline;
+}
+
+.btn-register {
+    width: 100%;
+    padding: 12px;
+    background: #9b59b6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-register:hover {
+    background: #8e44ad;
+}
+
+.register-footer {
+    margin-top: 20px;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+}
+
+.register-footer a {
+    color: #9b59b6;
+    text-decoration: none;
+}
+
+.register-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 480px) {
+    .register-card {
+        padding: 20px;
+    }
+
+    .register-header h1 {
+        font-size: 20px;
+    }
+
+    .input-group input {
+        padding: 10px 35px;
+    }
+}
+
+/* Error States */
+.input-group.error input {
+    border-color: #e74c3c;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Password Strength Indicator */
+.password-strength {
+    height: 4px;
+    margin-top: 5px;
+    border-radius: 2px;
+    background: #ddd;
+    overflow: hidden;
+}
+
+.password-strength-bar {
+    height: 100%;
+    width: 0;
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+.strength-weak {
+    background: #e74c3c;
+    width: 33.33%;
+}
+
+.strength-medium {
+    background: #f39c12;
+    width: 66.66%;
+}
+
+.strength-strong {
+    background: #27ae60;
+    width: 100%;
+}

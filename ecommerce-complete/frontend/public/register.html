@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - Shop Online</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/register.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-card">
+            <div class="register-header">
+                <a href="../index.html" class="back-home">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <h1>Đăng ký tài khoản</h1>
+            </div>
+            <form id="registerForm" class="register-form">
+                <div class="form-group">
+                    <label for="fullname">Họ và tên</label>
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="fullname" name="fullname" required placeholder="Nhập họ và tên">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" required placeholder="Nhập địa chỉ email">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Số điện thoại</label>
+                    <div class="input-group">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="phone" name="phone" required placeholder="Nhập số điện thoại">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Mật khẩu</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" required placeholder="Nhập mật khẩu">
+                        <i class="fas fa-eye-slash toggle-password"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Xác nhận mật khẩu</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Nhập lại mật khẩu">
+                        <i class="fas fa-eye-slash toggle-password"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-container">
+                        <input type="checkbox" required>
+                        <span class="checkmark"></span>
+                        Tôi đồng ý với các <a href="#">điều khoản</a> và <a href="#">điều kiện</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-register">Đăng ký</button>
+            </form>
+
+            <div class="register-footer">
+                <p>Đã có tài khoản? <a href="login.html">Đăng nhập</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/auth.js"></script>
+</body>
+</html>
