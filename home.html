@@ -70,6 +70,144 @@
   </button>
 </div>
 
+<!-- Recently Viewed Products Section -->
+{% if recently_viewed %}
+<section class="py-5" id="recently-viewed">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>Recently Viewed</h2>
+      <a href="#" class="text-decoration-none">View all <i class="fas fa-arrow-right ms-1"></i></a>
+    </div>
+    
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      {% for product in recently_viewed %}
+      <div class="col">
+        <div class="card h-100 shadow-sm border-info">
+          <div class="position-absolute top-0 start-0 bg-info text-white px-2 py-1 m-2 rounded">
+            <i class="fas fa-eye me-1"></i> Recently Viewed
+          </div>
+          <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}" 
+               style="height: 200px; object-fit: contain; padding: 15px;" 
+               onerror="this.src='{{ url_for('static', filename='img/placeholder.jpg') }}'">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title" style="height: 3em; overflow: hidden;">{{ product.name }}</h5>
+            <div class="mb-2">
+              {% if product.rating != 'N/A' %}
+              <div class="text-warning">
+                {% set rating = product.rating|float %}
+                {% for i in range(5) %}
+                  {% if i < rating|int %}
+                    <i class="fas fa-star"></i>
+                  {% elif i < rating %}
+                    <i class="fas fa-star-half-alt"></i>
+                  {% else %}
+                    <i class="far fa-star"></i>
+                  {% endif %}
+                {% endfor %}
+                <span class="text-muted ms-1 small">{{ product.rating }}</span>
+              </div>
+              {% endif %}
+            </div>
+            <div class="mt-auto">
+              <p class="card-text mb-2">
+                {% if product.discounted_price != 'N/A' %}
+                <span class="text-danger fw-bold">{{ product.discounted_price }}</span>
+                {% if product.discounted_price != product.price %}
+                <span class="text-decoration-line-through ms-2 text-muted">{{ product.price }}</span>
+                {% endif %}
+                {% else %}
+                <span class="fw-bold">{{ product.price }}</span>
+                {% endif %}
+              </p>
+              <div class="d-flex justify-content-between">
+                <a href="{{ url_for('product_detail', product_id=product.product_id) }}" class="btn btn-outline-info">View</a>
+                <form action="{{ url_for('add_to_cart', product_id=product.product_id) }}" method="post" class="d-inline">
+                  <input type="hidden" name="quantity" value="1">
+                  <input type="hidden" name="next" value="{{ request.path }}">
+                  <button type="submit" class="btn btn-info text-white">
+                    <i class="fas fa-cart-plus"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- History-Based Recommendations -->
+{% if history_recommendations %}
+<section class="py-5 bg-light" id="history-recommendations">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>Based on Your Browsing History</h2>
+      <a href="#" class="text-decoration-none">View all <i class="fas fa-arrow-right ms-1"></i></a>
+    </div>
+    
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      {% for product in history_recommendations %}
+      <div class="col">
+        <div class="card h-100 shadow-sm border-primary">
+          <div class="position-absolute top-0 start-0 bg-primary text-white px-2 py-1 m-2 rounded">
+            <i class="fas fa-history me-1"></i> Similar to Viewed
+          </div>
+          <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}" 
+               style="height: 200px; object-fit: contain; padding: 15px;" 
+               onerror="this.src='{{ url_for('static', filename='img/placeholder.jpg') }}'">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title" style="height: 3em; overflow: hidden;">{{ product.name }}</h5>
+            <div class="mb-2">
+              {% if product.rating != 'N/A' %}
+              <div class="text-warning">
+                {% set rating = product.rating|float %}
+                {% for i in range(5) %}
+                  {% if i < rating|int %}
+                    <i class="fas fa-star"></i>
+                  {% elif i < rating %}
+                    <i class="fas fa-star-half-alt"></i>
+                  {% else %}
+                    <i class="far fa-star"></i>
+                  {% endif %}
+                {% endfor %}
+                <span class="text-muted ms-1 small">{{ product.rating }}</span>
+              </div>
+              {% endif %}
+            </div>
+            <div class="mt-auto">
+              <p class="card-text mb-2">
+                {% if product.discounted_price != 'N/A' %}
+                <span class="text-danger fw-bold">{{ product.discounted_price }}</span>
+                {% if product.discounted_price != product.price %}
+                <span class="text-decoration-line-through ms-2 text-muted">{{ product.price }}</span>
+                {% endif %}
+                {% else %}
+                <span class="fw-bold">{{ product.price }}</span>
+                {% endif %}
+              </p>
+              <div class="d-flex justify-content-between">
+                <a href="{{ url_for('product_detail', product_id=product.product_id) }}" class="btn btn-outline-primary">View</a>
+                <form action="{{ url_for('add_to_cart', product_id=product.product_id) }}" method="post" class="d-inline">
+                  <input type="hidden" name="quantity" value="1">
+                  <input type="hidden" name="next" value="{{ request.path }}">
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-cart-plus"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
 <!-- Top 5 Products Section -->
 <section class="py-5" id="top-products">
   <div class="container">
@@ -165,6 +303,75 @@
     {% endif %}
   </div>
 </div>
+
+<!-- Preferred Category Section (if user has a preferred category) -->
+{% if preferred_category and preferred_products %}
+<section class="py-5 bg-light" id="preferred-category">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>{{ preferred_category }} - Based on Your Interest</h2>
+      <a href="{{ url_for('category', category=preferred_category) }}" class="text-decoration-none">View all <i class="fas fa-arrow-right ms-1"></i></a>
+    </div>
+    
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      {% for product in preferred_products %}
+      <div class="col">
+        <div class="card h-100 shadow-sm border-warning">
+          <div class="position-absolute top-0 start-0 bg-warning text-dark px-2 py-1 m-2 rounded">
+            <i class="fas fa-heart me-1"></i> For You
+          </div>
+          <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}" 
+               style="height: 200px; object-fit: contain; padding: 15px;" 
+               onerror="this.src='{{ url_for('static', filename='img/placeholder.jpg') }}'">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title" style="height: 3em; overflow: hidden;">{{ product.name }}</h5>
+            <div class="mb-2">
+              {% if product.rating != 'N/A' %}
+              <div class="text-warning">
+                {% set rating = product.rating|float %}
+                {% for i in range(5) %}
+                  {% if i < rating|int %}
+                    <i class="fas fa-star"></i>
+                  {% elif i < rating %}
+                    <i class="fas fa-star-half-alt"></i>
+                  {% else %}
+                    <i class="far fa-star"></i>
+                  {% endif %}
+                {% endfor %}
+                <span class="text-muted ms-1 small">{{ product.rating }}</span>
+              </div>
+              {% endif %}
+            </div>
+            <div class="mt-auto">
+              <p class="card-text mb-2">
+                {% if product.discounted_price != 'N/A' %}
+                <span class="text-danger fw-bold">{{ product.discounted_price }}</span>
+                {% if product.discounted_price != product.price %}
+                <span class="text-decoration-line-through ms-2 text-muted">{{ product.price }}</span>
+                {% endif %}
+                {% else %}
+                <span class="fw-bold">{{ product.price }}</span>
+                {% endif %}
+              </p>
+              <div class="d-flex justify-content-between">
+                <a href="{{ url_for('product_detail', product_id=product.product_id) }}" class="btn btn-outline-warning">View</a>
+                <form action="{{ url_for('add_to_cart', product_id=product.product_id) }}" method="post" class="d-inline">
+                  <input type="hidden" name="quantity" value="1">
+                  <input type="hidden" name="next" value="{{ request.path }}">
+                  <button type="submit" class="btn btn-warning">
+                    <i class="fas fa-cart-plus"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
 
 <!-- Popular Products Section -->
 <section class="py-5 bg-light" id="popular-products">
@@ -306,11 +513,11 @@
   </div>
 </section>
 
-<!-- Recommended Products Section -->
+<!-- Recommended Products Based on Cart Section -->
 {% if recommended_products %}
 <section class="py-5 bg-light" id="recommended-products">
   <div class="container">
-    <h2 class="mb-4">Recommended For You</h2>
+    <h2 class="mb-4">Recommended Based on Your Cart</h2>
     
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
       {% for product in recommended_products %}
