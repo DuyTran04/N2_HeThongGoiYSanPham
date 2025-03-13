@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <!-- Background -->
+  <rect width="800" height="1000" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle">Deep Matrix Factorization Recommendation Process</text>
+  
+  <!-- Training Phase Section -->
+  <rect x="50" y="70" width="700" height="400" rx="10" fill="#e6f7ff" stroke="#1890ff" stroke-width="2" />
+  <text x="400" y="100" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle">Training Phase</text>
+  
+  <!-- Training Data -->
+  <rect x="100" y="130" width="280" height="120" rx="5" fill="#fff" stroke="#1890ff" stroke-width="1" />
+  <text x="240" y="150" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Training Data</text>
+  <line x1="120" y1="170" x2="360" y2="170" stroke="#1890ff" stroke-width="1" />
+  <text x="130" y="190" font-family="Arial" font-size="12">User ID</text>
+  <text x="200" y="190" font-family="Arial" font-size="12">Product ID</text>
+  <text x="290" y="190" font-family="Arial" font-size="12">Rating</text>
+  
+  <text x="130" y="210" font-family="Arial" font-size="12">User_1</text>
+  <text x="200" y="210" font-family="Arial" font-size="12">Product_A</text>
+  <text x="290" y="210" font-family="Arial" font-size="12">4.5</text>
+  
+  <text x="130" y="230" font-family="Arial" font-size="12">User_2</text>
+  <text x="200" y="230" font-family="Arial" font-size="12">Product_B</text>
+  <text x="290" y="230" font-family="Arial" font-size="12">3.0</text>
+  
+  <text x="130" y="250" font-family="Arial" font-size="12">User_1</text>
+  <text x="200" y="250" font-family="Arial" font-size="12">Product_C</text>
+  <text x="290" y="250" font-family="Arial" font-size="12">5.0</text>
+  
+  <!-- DMF Model -->
+  <rect x="420" y="130" width="280" height="120" rx="5" fill="#fff" stroke="#1890ff" stroke-width="1" />
+  <text x="560" y="150" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Deep Matrix Factorization</text>
+  <line x1="440" y1="170" x2="680" y2="170" stroke="#1890ff" stroke-width="1" />
+  <text x="560" y="200" font-family="Arial" font-size="12" text-anchor="middle">Neural Network with</text>
+  <text x="560" y="220" font-family="Arial" font-size="12" text-anchor="middle">Multiple Hidden Layers</text>
+  <text x="560" y="240" font-family="Arial" font-size="12" text-anchor="middle">Learns Complex Interactions</text>
+  
+  <!-- Arrow from data to model -->
+  <line x1="380" y1="190" x2="420" y2="190" stroke="#666" stroke-width="2" marker-end="url(#arrow)" />
+  
+  <!-- Embeddings -->
+  <rect x="100" y="290" width="280" height="150" rx="5" fill="#fff" stroke="#1890ff" stroke-width="1" />
+  <text x="240" y="310" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">User Embeddings</text>
+  <line x1="120" y1="330" x2="360" y2="330" stroke="#1890ff" stroke-width="1" />
+  <text x="130" y="350" font-family="Arial" font-size="12">User_1: [0.5, 0.2, -0.3, ..., 0.1]</text>
+  <text x="130" y="370" font-family="Arial" font-size="12">User_2: [-0.1, 0.4, 0.8, ..., -0.2]</text>
+  <text x="130" y="390" font-family="Arial" font-size="12">User_3: [0.3, -0.5, 0.1, ..., 0.6]</text>
+  <text x="130" y="410" font-family="Arial" font-size="12" font-style="italic">16-dimensional vectors</text>
+  <text x="130" y="430" font-family="Arial" font-size="12" font-style="italic">Capturing user preferences</text>
+  
+  <rect x="420" y="290" width="280" height="150" rx="5" fill="#fff" stroke="#1890ff" stroke-width="1" />
+  <text x="560" y="310" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Product Embeddings</text>
+  <line x1="440" y1="330" x2="680" y2="330" stroke="#1890ff" stroke-width="1" />
+  <text x="450" y="350" font-family="Arial" font-size="12">Product_A: [0.8, -0.2, 0.4, ..., 0.3]</text>
+  <text x="450" y="370" font-family="Arial" font-size="12">Product_B: [0.1, 0.6, -0.1, ..., 0.5]</text>
+  <text x="450" y="390" font-family="Arial" font-size="12">Product_C: [-0.3, 0.7, 0.2, ..., -0.4]</text>
+  <text x="450" y="410" font-family="Arial" font-size="12" font-style="italic">16-dimensional vectors</text>
+  <text x="450" y="430" font-family="Arial" font-size="12" font-style="italic">Capturing product characteristics</text>
+  
+  <!-- Arrows from model to embeddings -->
+  <line x1="560" y1="250" x2="560" y2="270" stroke="#666" stroke-width="2" />
+  <line x1="560" y1="270" x2="400" y2="290" stroke="#666" stroke-width="2" />
+  <line x1="560" y1="270" x2="700" y2="290" stroke="#666" stroke-width="2" />
+  
+  <!-- Recommendation Phase Section -->
+  <rect x="50" y="490" width="700" height="450" rx="10" fill="#fff0f6" stroke="#eb2f96" stroke-width="2" />
+  <text x="400" y="520" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle">Recommendation Phase</text>
+  
+  <!-- User Viewing Products -->
+  <rect x="100" y="550" width="600" height="80" rx="5" fill="#fff" stroke="#eb2f96" stroke-width="1" />
+  <text x="400" y="570" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">User Viewing Products</text>
+  <line x1="120" y1="590" x2="680" y2="590" stroke="#eb2f96" stroke-width="1" />
+  <text x="400" y="615" font-family="Arial" font-size="14" text-anchor="middle">User views a TV → System records category as "Electronics > TV"</text>
+  
+  <!-- Arrow down -->
+  <line x1="400" y1="630" x2="400" y2="650" stroke="#666" stroke-width="2" marker-end="url(#arrow)" />
+  
+  <!-- Recommendation Process -->
+  <rect x="100" y="650" width="600" height="180" rx="5" fill="#fff" stroke="#eb2f96" stroke-width="1" />
+  <text x="400" y="670" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Enhanced Recommendation Process</text>
+  <line x1="120" y1="690" x2="680" y2="690" stroke="#eb2f96" stroke-width="1" />
+  
+  <text x="120" y="710" font-family="Arial" font-size="14">1. Get user's recent category (e.g., "TV")</text>
+  <text x="120" y="735" font-family="Arial" font-size="14">2. Calculate cosine similarity between user and all products:</text>
+  <text x="150" y="755" font-family="Arial" font-size="12" font-style="italic">similarity = cos(user_embedding, product_embedding)</text>
+  <text x="120" y="780" font-family="Arial" font-size="14">3. Apply category bonus for products in same category:</text>
+  <text x="150" y="800" font-family="Arial" font-size="12" font-style="italic">final_score = (1-w) * similarity + w * category_bonus</text>
+  <text x="150" y="820" font-family="Arial" font-size="12" font-style="italic">where w = 0.6, category_bonus = 1 if same category, else 0</text>
+  
+  <!-- Arrow down -->
+  <line x1="400" y1="830" x2="400" y2="850" stroke="#666" stroke-width="2" marker-end="url(#arrow)" />
+  
+  <!-- Final Recommendations -->
+  <rect x="100" y="850" width="600" height="70" rx="5" fill="#f6ffed" stroke="#52c41a" stroke-width="2" />
+  <text x="400" y="870" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Recommended Products</text>
+  <line x1="120" y1="890" x2="680" y2="890" stroke="#52c41a" stroke-width="1" />
+  <text x="400" y="910" font-family="Arial" font-size="14" text-anchor="middle">Top-N products with highest final_score, prioritizing same category (TV)</text>
+  
+  <!-- Mathematical details -->
+  <rect x="100" y="940" width="600" height="40" rx="5" fill="#fffbe6" stroke="#faad14" stroke-width="1" />
+  <text x="400" y="965" font-family="Arial" font-size="12" text-anchor="middle" font-style="italic">
+    Category-Enhanced DMF ensures recommendations stay within the same product category
+  </text>
+  
+  <!-- Define the arrow marker -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#666" />
+    </marker>
+  </defs>
+</svg>

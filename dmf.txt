@@ -1,0 +1,67 @@
+# Giải thích chi tiết về thuật toán Deep Matrix Factorization (DMF)
+
+Tôi đã tạo hai hình minh họa chi tiết về thuật toán Deep Matrix Factorization mà bạn đang sử dụng trong đồ án tốt nghiệp. Các hình này phân tích chi tiết về kiến trúc và quy trình gợi ý sản phẩm của DMF.
+
+## 1. Kiến trúc Deep Matrix Factorization
+
+### INPUT:
+- **user_id**: ID của người dùng
+- **product_id**: ID của sản phẩm
+- **rating**: Đánh giá của người dùng cho sản phẩm (thang điểm 1-5)
+
+### QUÁ TRÌNH XỬ LÝ:
+
+1. **Embedding Layer**:
+   - **User Embedding**: Chuyển user_id thành vector 16 chiều
+   - **Product Embedding**: Chuyển product_id thành vector 16 chiều
+
+2. **Flatten Layer**:
+   - Biến đổi các tensor thành vector 1 chiều
+
+3. **Concatenate Layer**:
+   - Ghép nối user vector và product vector thành một vector 32 chiều
+
+4. **Deep Neural Network**:
+   - **Layer 1**: 32 neurons với BatchNorm, LeakyReLU và Dropout(0.3)
+   - **Layer 2**: 16 neurons với BatchNorm, LeakyReLU và Dropout(0.3)
+   - **Layer 3**: 8 neurons với BatchNorm và LeakyReLU
+   - **Output Layer**: 1 neuron với activation function sigmoid
+
+### OUTPUT:
+- **Predicted Rating**: Giá trị trong khoảng [0,1] sau đó được transform về thang điểm [1,5]
+
+### Công thức toán học:
+```
+predicted_rating = σ(W₃ · ReLU(BN(W₂ · ReLU(BN(W₁ · [u; p] + b₁)) + b₂)) + b₃)
+```
+Trong đó:
+- u: vector embedding của user
+- p: vector embedding của product
+- [u; p]: ghép nối vector u và p
+- W₁, W₂, W₃: ma trận trọng số các layer
+- b₁, b₂, b₃: bias của các layer
+- BN: Batch Normalization
+- σ: hàm sigmoid
+
+## 2. Quy trình đề xuất sản phẩm với DMF cải tiến
+
+### GIAI ĐOẠN HUẤN LUYỆN:
+1. **Training Data**: Dữ liệu huấn luyện gồm (user_id, product_id, rating)
+2. **Deep Matrix Factorization**: Mạng neural nhiều tầng học các mối tương tác phức tạp
+3. **Kết quả**: Sau khi huấn luyện, mô hình tạo ra:
+   - **User Embeddings**: Các vector 16 chiều biểu diễn sở thích người dùng
+   - **Product Embeddings**: Các vector 16 chiều biểu diễn đặc tính sản phẩm
+
+### GIAI ĐOẠN ĐỀ XUẤT:
+1. **Theo dõi hành vi người dùng**: Ghi lại danh mục sản phẩm mà người dùng đang xem (ví dụ: TV)
+2. **Quy trình đề xuất nâng cao**:
+   - Lấy danh mục gần đây (ví dụ: "TV")
+   - Tính độ tương đồng cosine giữa user_embedding và tất cả product_embeddings
+   - Áp dụng trọng số danh mục (category bonus):
+     ```
+     final_score = (1-w) * similarity + w * category_bonus
+     ```
+     với w = 0.6, category_bonus = 1 nếu cùng danh mục, = 0 nếu khác
+3. **Kết quả đề xuất**: Những sản phẩm có final_score cao nhất, ưu tiên cùng danh mục
+
+Với kiến trúc DMF cải tiến này, hệ thống đảm bảo khi người dùng xem TV, hệ thống sẽ gợi ý các TV khác; khi xem điện thoại, hệ thống sẽ gợi ý các điện thoại hoặc phụ kiện điện thoại. Điều này tạo ra trải nghiệm đề xuất có ý nghĩa và liên quan đến ngữ cảnh hiện tại của người dùng.
